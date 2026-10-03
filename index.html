@@ -1,1 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>BTS Dance Teams 2026</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #000;
+}
+
+#billboard {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background: #000;
+}
+
+.slide {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out;
+}
+
+.slide.active {
+    opacity: 1;
+}
+</style>
+</head>
+
+<body>
+
+<div id="billboard"></div>
+
+<script>
+
+const danceTeams = [
+    "ace of hearts.png",
+    "Allstarznew.png",
+    "Black Velvet.png",
+    "DEVIL-S-DANCERS.png",
+    "Exotica-New-Banner-o1.png",
+    "Fire Angels.jpg",
+    "Kings of night.jpg",
+    "Lollipops.png",
+    "Midnight Chemistry.png",
+    "New Rock Angels.png",
+    "Pheonix Fire.jfif",
+    "Rock Angels.png",
+    "Sex_Pixels_New_May_2026_1024x1024.png",
+    "sinergy_new_Sept_2026.png",
+    "SK-BANNER.png",
+    "Starlights.png",
+    "voodoo-vixens-dance-team-for-hire-white-girls-2026a.jpg"
+];
+
+const billboard = document.getElementById("billboard");
+
+let current = 0;
+let slides = [];
+
+danceTeams.forEach((filename, index) => {
+
+    const img = document.createElement("img");
+
+    img.src = encodeURI(filename);
+    img.className = "slide";
+    img.alt = "BTS Dance Team";
+
+    if (index === 0) {
+        img.classList.add("active");
+    }
+
+    billboard.appendChild(img);
+    slides.push(img);
+});
+
+if (slides.length > 1) {
+
+    setInterval(() => {
+
+        slides[current].classList.remove("active");
+
+        current++;
+
+        if (current >= slides.length) {
+            current = 0;
+        }
+
+        slides[current].classList.add("active");
+
+    }, 8000);
+}
+
+</script>
+
+</body>
+</html>
